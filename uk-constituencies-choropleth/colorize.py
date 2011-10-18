@@ -28,12 +28,13 @@ def assign_colors(filename, colors):
     
     return assigned_colors
 
-def colorize(filename, colors, id_map=ID_MAP, svg="classless.svg"):
+def colorize(filename, colors, id_map=ID_MAP, svg="2010UKElectionMap.svg"):
     soup = parse_svg(svg)
     paths = soup.findAll("path")
     colors = assign_colors(filename, colors)
     id_map = dict(zip(id_map.values(), id_map.keys()))
-    path_style = """font-size:12px;fill-rule:nonzero;stroke:#000000;stroke-opacity:1;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:0;stroke-linecap:butt;marker-start:none;stroke-linejoin:bevel;fill:"""
+    # path_style = """font-size:12px;fill-rule:nonzero;stroke:#000000;stroke-opacity:1;stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:0;stroke-linecap:butt;marker-start:none;stroke-linejoin:bevel;fill:"""
+    path_style = "stroke:#fff;stroke-width:0.1;fill:"
     for path in paths:
         try:
             svg_id = path["id"]
